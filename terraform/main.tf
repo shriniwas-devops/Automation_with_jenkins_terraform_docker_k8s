@@ -98,6 +98,7 @@ resource "aws_eip" "example" {
 resource "aws_instance" "example" {
   ami           = "ami-0557a15b87f6559cf"
   instance_type = "t2.micro"
+  count = var.instance_count
   subnet_id     = aws_subnet.example.id
 
   vpc_security_group_ids = [
@@ -105,7 +106,7 @@ resource "aws_instance" "example" {
   ]
 
   tags = {
-    Name = "example-instance"
+    Name = "example-instance-${count.index + 1}"
   }
 }
 
