@@ -61,11 +61,11 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'kubectl apply -f deploy.yaml --record=true'
-                        sh 'kubectl apply -f service.yaml'
+                        sh 'kubectl apply -f deployment.yaml --record=true'
+                        sh 'kubectl apply -f services.yaml'
                     } catch (error) {
-                        sh 'kubectl create -f deploy.yaml'
-                        sh 'kubectl create -f service.yaml'
+                        sh 'kubectl create -f deployment.yaml'
+                        sh 'kubectl create -f services.yaml'
                     }
                 }
             }
