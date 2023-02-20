@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone_Repo'){
+         stage('Clone_Repo'){
             steps {
                 sh 'git clone https://github.com/Vinodvarma1999/Automation_with_Docker_K8s_Jenkins.git'
             }
@@ -11,7 +11,7 @@ pipeline {
         
          stage('Build_Image'){
             steps {
-                sh 'sudo docker build -t vinod0510/my-capstone-project-01 .'
+                sh 'sudo docker build -t vinod0510/automation-djkt:latest .'
             }
         }
         
@@ -20,7 +20,7 @@ pipeline {
                 sh '''
                   #!/bin/bash
                     sudo docker rm -f $(sudo docker ps -a -q)
-                    sudo docker run -d -p 8081:80 --name my-capstone-project-1 vinod0510/my-capstone-project-01:latest
+                    sudo docker run -d -p 8081:80 --name my-capstone-project-1 vinod0510/automation-djkt:latest
                '''
                }
            }     
@@ -31,9 +31,9 @@ pipeline {
                  sh '''
                    #!bin/bash  
                      sudo docker login -u vinod0510 -p ${vinod0510}'
-                     sudo docker push  vinod0510/my-capstone-project-01'
+                     sudo docker push  vinod0510/automation-djkt:latest'
                      sudo docker rm -f $(sudo docker ps -a -q)'
-                     sudo docker rmi vinod0510/my-capstone-project-01    
+                     sudo docker rmi vinod0510/automation-djkt:latest    
                 ''' 
                 }
                 
