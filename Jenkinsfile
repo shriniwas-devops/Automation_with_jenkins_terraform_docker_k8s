@@ -9,19 +9,33 @@ pipeline {
             }
         }
          
-        stage('Install_Docker') {
+//         stage('Install_Docker') {
+//             steps {
+//                 script {
+//                     def dockerPath = sh(script: 'which docker', returnStatus: true)
+//                     if (dockerPath != 0) {
+//                         sh 'apt update'
+//                         sh 'apt-get install docker.io -y -q'
+//                     } else {
+//                         echo 'Docker is already installed'
+//                   }
+//                }
+//             }
+//          }
+        
+        
+        
+        stage('Install Docker') {
             steps {
                 script {
-                    def dockerPath = sh(script: 'which docker', returnStatus: true)
-                    if (dockerPath != 0) {
-                        sh 'apt update'
-                        sh 'apt-get install docker.io -y -q'
-                    } else {
-                        echo 'Docker is already installed'
-                  }
-               }
+                    def exitStatus = sh script: 'sudo apt update && sudo apt install docker.io -y', returnStatus: true
+                    if (exitStatus != 0) {
+                        error("Failed to install Docker. Exit status: ${exitStatus}")
+                    }
+                }
             }
-         }
+        }
+
         
 
         stage('Build Image') {
