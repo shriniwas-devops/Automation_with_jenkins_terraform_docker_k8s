@@ -8,6 +8,25 @@ pipeline {
                 sh 'git clone https://github.com/Vinodvarma1999/Automation_with_Docker_K8s_Jenkins.git'
             }
         }
+         
+        stage('Install_Docker') {
+            steps {
+                script {
+                    def dockerPath = sh(returnStdout: true, script: 'which docker').trim()
+                    if (dockerPath) {
+                        echo 'Docker is already installed, skipping installation'
+                    } else {
+                        sh 'sudo apt-get update'
+                        sh 'sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common'
+                        sh 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -'
+                        sh 'sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
+                        sh 'sudo apt-get update'
+                        sh 'sudo apt-get install -y docker-ce docker-ce-cli containerd.io'
+                  }
+               }
+            }
+         }
+        
 
         stage('Build Image') {
             steps {
