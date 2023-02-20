@@ -3,7 +3,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Build_Image'){
+        stage('Clone_Repo'){
+            steps {
+                sh 'git clone https://github.com/Vinodvarma1999/Automation_with_Docker_K8s_Jenkins.git'
+            }
+        }
+        
+         stage('Build_Image'){
             steps {
                 sh 'sudo docker build -t vinod0510/my-capstone-project-01 .'
             }
