@@ -35,9 +35,9 @@ pipeline {
             steps {
                 sh '''
                     #!/bin/bash
-                    docker stop my-capstone-project-1 || true
-                    docker rm my-capstone-project-1 || true
-                    docker run -d -p 8081:80 --name my-capstone-project-1 vinod0510/automation-djkt:latest
+                    docker stop my_project-1 || true
+                    docker rm my_project-1 || true
+                    docker run -d -p 8081:80 --name my_project-1 vinod0510/automation-djkt:latest
                 '''
             }
         }
