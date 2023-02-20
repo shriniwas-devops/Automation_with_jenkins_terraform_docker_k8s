@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
+                sh 'rm -rf Automation_with_Docker_K8s_Jenkins'
                 sh 'git clone https://github.com/Vinodvarma1999/Automation_with_Docker_K8s_Jenkins.git'
             }
         }
