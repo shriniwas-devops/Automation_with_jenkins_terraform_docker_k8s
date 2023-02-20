@@ -1,4 +1,4 @@
-# Using environment variables: You can also store your AWS credentials as environment variables. To do this, you can add the following lines to your ~/.bashrc or ~/.bash_profile file:
+# Using environment variable: You can also store your AWS credentials as environment variables. To do this, you can add the following lines to your ~/.bashrc or ~/.bash_profile file:
 
 # export AWS_ACCESS_KEY_ID="your_access_key_id"
 # export AWS_SECRET_ACCESS_KEY="your_secret_access_key"
