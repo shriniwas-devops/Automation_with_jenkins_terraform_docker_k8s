@@ -14,8 +14,8 @@ pipeline {
                 script {
                     def dockerPath = sh(script: 'which docker', returnStatus: true)
                     if (dockerPath != 0) {
-                        sh 'sudo apt update'
-                        sh 'sudo apt install docker.io -y'
+                        sh 'apt update'
+                        sh 'apt install docker.io -y'
                     } else {
                         echo 'Docker is already installed'
                   }
