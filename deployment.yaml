@@ -1,4 +1,4 @@
-piVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
  name: app
@@ -17,6 +17,6 @@ spec:
   spec:
    containers:
     - name: e-comm-webapp
-      image: vinod0510/e-commerce
+      image: vinod0510/automation-djkt:latest
       ports:
        - containerPort: 80
