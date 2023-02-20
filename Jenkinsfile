@@ -12,16 +12,11 @@ pipeline {
         stage('Install_Docker') {
             steps {
                 script {
-                    def dockerPath = sh(returnStdout: true, script: 'which docker').trim()
+                    def dockerInstalled = sh(returnStatus: true, script: 'which docker > /dev/null 2>&1').exitStatus == 0
                     if (dockerPath) {
                         echo 'Docker is already installed, skipping installation'
                     } else {
-                        sh 'sudo apt-get update'
-                        sh 'sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common'
-                        sh 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -'
-                        sh 'sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"'
-                        sh 'sudo apt-get update'
-                        sh 'sudo apt-get install -y docker-ce docker-ce-cli containerd.io'
+                        sh 'sudo apt install docker.io -y'
                   }
                }
             }
