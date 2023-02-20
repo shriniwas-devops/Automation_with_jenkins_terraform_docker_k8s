@@ -12,11 +12,12 @@ pipeline {
         stage('Install_Docker') {
             steps {
                 script {
-                    def dockerPath = sh(returnStdout: true, script: 'which docker').trim()
-                    if (dockerPath) {
-                        echo 'Docker is already installed, skipping installation'
-                    } else {
+                    def dockerPath = sh(script: 'which docker', returnStatus: true)
+                    if (dockerPath != 0) {
+                        sh 'sudo apt update'
                         sh 'sudo apt install docker.io -y'
+                    } else {
+                        echo 'Docker is already installed'
                   }
                }
             }
