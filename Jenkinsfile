@@ -12,7 +12,7 @@ pipeline {
         stage('Install_Docker') {
             steps {
                 script {
-                    def dockerInstalled = sh(returnStatus: true, script: 'which docker > /dev/null 2>&1').exitStatus == 0
+                    def dockerPath = sh(returnStatus: true, script: 'which docker > /dev/null 2>&1').exitStatus == 0
                     if (dockerPath) {
                         echo 'Docker is already installed, skipping installation'
                     } else {
