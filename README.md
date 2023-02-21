@@ -199,16 +199,16 @@ pipeline {
 }
 ```
 
-<h2> Clone Repo: This stage clones the source code from a GitHub repository. 
+`Clone Repo` : This stage clones the source code from a GitHub repository. 
 
-Install_Docker: This stage checks if Docker is installed and installs it if it is not already installed. If Docker is already installed, the stage skips the installation.
+`Install_Docker` : This stage checks if Docker is installed and installs it if it is not already installed. If Docker is already installed, the stage skips the installation.
 
-Build Image: This stage builds a Docker image using the source code and Dockerfile in the cloned repository.
+`Build Image` : This stage builds a Docker image using the source code and Dockerfile in the cloned repository.
 
-Run Container: This stage runs a Docker container from the image built in the previous stage.
+`Run Container` : This stage runs a Docker container from the image built in the previous stage.
 
-Push Image: This stage logs into Docker Hub using a set of credentials, and pushes the newly built Docker image to the Docker Hub registry.
+`Push Image` : This stage logs into Docker Hub using a set of credentials, and pushes the newly built Docker image to the Docker Hub registry.
 
-Deploy to K8s Server: This stage deploys the newly built Docker image to a Kubernetes cluster. This stage is executed on a Kubernetes agent, which is specified using the label attribute in the agent block.
+`Deploy to K8s Server` : This stage deploys the newly built Docker image to a Kubernetes cluster. This stage is executed on a Kubernetes agent, which is specified using the label attribute in the agent block.
 
-Overall, the pipeline automates the entire process of building and deploying a Docker image to a Kubernetes cluster, enabling continuous integration and deployment of applications. </h2>
+Overall, the pipeline automates the entire process of building and deploying a Docker image to a Kubernetes cluster, enabling continuous integration and deployment of applications. 
