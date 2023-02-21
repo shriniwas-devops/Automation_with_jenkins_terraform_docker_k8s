@@ -41,13 +41,11 @@ Step 1: Create a Dockerfile
 A Dockerfile is a script that contains a series of instructions for building a Docker image. This tutorial will use a simple Node.js application as an example.
 
 ```sh
-FROM node:12
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-EXPOSE 3000
-CMD ["npm", "start"]
+FROM ubuntu/apache2
+RUN apt-get update && rm -rf /var/www/html/*
+COPY ./web-app /var/www/html/
+EXPOSE 80
+CMD apache2ctl -D FOREGROUND
 ```
 
 This Dockerfile instructs Docker to use the official Node.js 12 image as the base image, set the working directory to "/app", copy the package.json file to the working directory, install dependencies, copy the application code to the container, expose port 3000, and run the command "npm start" when the container starts. 
