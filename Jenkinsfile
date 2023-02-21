@@ -22,7 +22,13 @@ pipeline {
                }
             }
          }
-    
+        
+       stage('Configure Docker') {
+          steps {
+              sh 'sudo usermod -aG docker jenkins'
+              sh 'sudo chmod 666 /var/run/docker.sock'
+           }
+       }
         
 
         stage('Build Image') {
