@@ -25,8 +25,8 @@ pipeline {
         
        stage('Configure Docker') {
           steps {
-              sh 'usermod -aG docker jenkins'
-              sh 'chmod 666 /var/run/docker.sock'
+              sh 'sudo usermod -aG docker jenkins'
+              sh 'sudo chmod 666 /var/run/docker.sock'
            }
        }
         
