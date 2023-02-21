@@ -1,6 +1,6 @@
 # Automating Docker and Kubernetes Deployment with Jenkins
 
-![](Image/Project.png)
+![](Image/Project_architecture.png)
 
 # Prerequisites
 <h3> Before we dive into the tutorial, you will need the following: </h3>
