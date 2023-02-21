@@ -92,7 +92,8 @@ resource "aws_route_table_association" "example" {
 }
 
 resource "aws_eip" "example" {
-  instance = aws_instance.example.id
+  count    = 2  # Create as per Instance
+  instance = aws_instance.example[count.index].id
 }
 
 resource "aws_instance" "example" {
@@ -108,8 +109,4 @@ resource "aws_instance" "example" {
   tags = {
     Name = "example-instance-${count.index + 1}"
   }
-}
-
-output "instance_id" {
-  value = aws_instance.example.id
 }
